@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_04_045721) do
+ActiveRecord::Schema.define(version: 2019_10_04_050523) do
 
   create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -19,4 +19,14 @@ ActiveRecord::Schema.define(version: 2019_10_04_045721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "token"
+    t.bigint "field_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_players_on_field_id"
+  end
+
+  add_foreign_key "players", "fields"
 end
