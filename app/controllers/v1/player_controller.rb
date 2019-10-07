@@ -8,10 +8,14 @@ class V1::PlayerController < ApplicationController
             render json: { error: 'プレイヤー登録失敗' }
         end
     end
+  
+    def show
+        @player = Player.find(params[:id])
+        render json: @player
+    end
 
     private
     #ストロングパラメータ
-
     def player_params
         params.require(:player).permit(:name,:field_id)
     end

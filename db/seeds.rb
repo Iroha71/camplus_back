@@ -8,3 +8,5 @@
 Field.create(name: 'システム開発')
 Field.create(name: 'ネットワーク')
 Field.create(name: '電子システム')
+
+Player.create(name: 'uchibori')
