@@ -23,6 +23,15 @@ class V1::PlayerController < ApplicationController
        end
     end
 
+    def destroy
+        if@player = Player.find(params[:id]).destroy
+            render json: { messeage: 'プレイヤー削除成功'}
+        else
+            render json: { error: 'プレイヤー削除失敗'}
+        end
+    end
+
+
     private
     #ストロングパラメータ
     def player_params
