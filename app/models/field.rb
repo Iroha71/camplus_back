@@ -3,4 +3,6 @@ class Field < ApplicationRecord
         self.total_num += 1
         return self
     end
+
+    
 end
