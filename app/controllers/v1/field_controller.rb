@@ -8,4 +8,15 @@ class V1::FieldController < ApplicationController
             render json: { error: '学科が存在しません' }
         end
     end
+    #学科情報を取得
+    def show
+        @field = Field.find(params[:id])
+        if @field
+            render json: @field
+        else
+            render json: { error:'学科が存在しません'}
+        end
+    end
+
+        
 end
