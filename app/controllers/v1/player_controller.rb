@@ -14,9 +14,19 @@ class V1::PlayerController < ApplicationController
         render json: @player
     end
 
+    def update
+        @player = Player.find(params[:id])
+       if @player.update_attributes(player_params)
+        render json:{ messeage: '提案学科登録成功'}
+       else
+        render json:{ error: '提案学科登録失敗'}
+       end
+    end
+
     private
     #ストロングパラメータ
     def player_params
         params.require(:player).permit(:name,:field_id)
     end
+
 end
