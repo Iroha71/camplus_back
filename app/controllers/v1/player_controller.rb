@@ -8,12 +8,13 @@ class V1::PlayerController < ApplicationController
             render json: { error: 'プレイヤー登録失敗' }
         end
     end
-  
+    
     def show
         @player = Player.find(params[:id])
         render json: @player
     end
 
+    #プレイヤー情報更新
     def update
         @player = Player.find(params[:id])
        if @player.update_attributes(player_params)
@@ -22,7 +23,8 @@ class V1::PlayerController < ApplicationController
         render json:{ error: '提案学科登録失敗'}
        end
     end
-
+    
+    #プレイヤー情報削除
     def destroy
         if@player = Player.find(params[:id]).destroy
             render json: { messeage: 'プレイヤー削除成功'}
