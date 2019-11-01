@@ -23,6 +23,17 @@ class V1::PlayerController < ApplicationController
         render json:{ error: '提案学科登録失敗'}
        end
     end
+     
+    #セーブデータを保存
+    def saving
+        @player = Player.find(params[:id])
+        if @player.update_attributes(savedata: params[:savedata])
+            render json:{ messeage: 'セーブしました'}
+        else
+            render json:{ error: 'セーブに失敗しました'}
+        end
+    end
+
     
     #プレイヤー情報削除
     def destroy
