@@ -3,7 +3,7 @@ class V1::PlayerController < ApplicationController
     def create
         @player = Player.new(player_params)#player_params＝Postデータをチェックするメソット
         if @player.save!
-            render json: { message: 'プレイヤー登録成功' }
+            render json: @player
         else
             render json: { error: 'プレイヤー登録失敗' }
         end
