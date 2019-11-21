@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_050352) do
+ActiveRecord::Schema.define(version: 2019_11_10_123342) do
 
   create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_050352) do
     t.bigint "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "savedata"
+    t.text "savedata"
     t.index ["field_id"], name: "index_players_on_field_id"
   end
 
