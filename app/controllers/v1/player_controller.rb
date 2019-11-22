@@ -17,11 +17,12 @@ class V1::PlayerController < ApplicationController
     #プレイヤー情報更新
     def update
         @player = Player.find(params[:id])
-       if @player.update_attributes(player_params)
-        render json:{ messeage: '提案学科登録成功'}
-       else
-        render json:{ error: '提案学科登録失敗'}
-       end
+        recommend_field_id = @player.decide_recommend_field(params[:system], params[:network], params[:embeded])
+        if @player.update_attributes(field_id: recommend_field_id)
+            render json:{ messeage: '提案学科登録成功'}
+        else
+            render json:{ error: '提案学科登録失敗'}
+        end
     end
      
     #セーブデータを保存
