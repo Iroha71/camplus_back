@@ -28,7 +28,7 @@ class V1::PlayerController < ApplicationController
         @player = Player.find(params[:id])
         recommend_field_id = @player.decide_recommend_field(params[:system], params[:network], params[:embeded])
         if @player.update_attributes(field_id: recommend_field_id)
-            @field = Field.find(params[:id]).plus_total_num().save!
+            @field = Field.find(recommend_field_id).plus_total_num().save!
             render json:{ messeage: '提案学科登録成功'}
         else
             render json:{ error: '提案学科登録失敗'}
