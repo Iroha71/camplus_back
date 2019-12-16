@@ -21,7 +21,7 @@ class V1::FieldController < ApplicationController
 
     #全学科情報を取得
     def index
-        @field = Field.all()
+        @field = Field.all().order(:id)
         if @field
             render json: @field
         else
